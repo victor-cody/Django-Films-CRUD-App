@@ -1,4 +1,6 @@
+fly.toml
+.git/
+*.sqlite3
 .myenv
 __pycache__
 *.pyc
-*.sqlite3
