@@ -1,4 +1,5 @@
 import os
+from django.core.management.utils import get_random_secret_key
 # import configparser
 
 from pathlib import Path
@@ -25,12 +26,12 @@ env = environ.Env(  # <-- Updated!
 environ.Env.read_env(BASE_DIR / '.env')
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')  # <-- Updated!
+SECRET_KEY = env.str('SECRET_KEY', default=get_random_secret_key())
 
 # SECRET_KEY = parser["BASE"]["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')  # <-- Updated!
+DEBUG = env('DEBUG')  # <-- Updated!``
 
 ALLOWED_HOSTS = ['*']
 
@@ -84,11 +85,15 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+ 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default='sqlite:///' + os.path.join('db.sqlite3'))    
 }
 
 
