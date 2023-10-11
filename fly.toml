@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for django-films-app on 2023-10-11T14:36:29+01:00
+# fly.toml app configuration file generated for django-films-app on 2023-10-11T15:20:44+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = "django-films-app"
-primary_region = "cdg"
+primary_region = "lhr"
 console_command = "/code/manage.py shell"
 
 [build]
