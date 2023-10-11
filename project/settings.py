@@ -1,12 +1,14 @@
 import os
-import configparser
+# import configparser
 
 from pathlib import Path
 
+import environ
+
 import dj_database_url
 
-parser = configparser.ConfigParser()
-parser.read('config_file.ini')
+# parser = configparser.ConfigParser()
+# parser.read('config_file.ini')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,10 +17,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = parser["BASE"]["SECRET_KEY"]
+env = environ.Env(  # <-- Updated!
+    # set casting, default value
+    DEBUG=(bool, False),
+)
+
+environ.Env.read_env(BASE_DIR / '.env')
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = env('SECRET_KEY')  # <-- Updated!
+
+# SECRET_KEY = parser["BASE"]["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')  # <-- Updated!
 
 ALLOWED_HOSTS = ['*']
 

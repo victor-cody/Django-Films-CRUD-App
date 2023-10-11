@@ -2,6 +2,7 @@
 __pycache__
 *.pyc
 *.sqlite3
+.env
 
 # Python files
 __pycache__/
