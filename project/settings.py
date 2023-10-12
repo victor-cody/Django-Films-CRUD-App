@@ -35,8 +35,7 @@ DEBUG = env('DEBUG')  # <-- Updated!``
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']
-
+CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev', 'http://*.fly.dev']
 # Application definition
 
 INSTALLED_APPS = [
