@@ -35,7 +35,7 @@ DEBUG = env('DEBUG')  # <-- Updated!``
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://*.aptible.com', 'https://*.aptible.com']
+CSRF_TRUSTED_ORIGINS = ['http://*.on-aptible.com', 'https://*.on-aptible.com']
 
 # Application definition
 
